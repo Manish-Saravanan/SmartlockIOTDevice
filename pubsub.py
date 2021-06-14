@@ -22,10 +22,16 @@ def get_callback(f, data):
 
     return callback
 
-data = "Hello world."
+import base64
+from PIL import Image
+from io import BytesIO
+
+with open("image.jpg", "rb") as image_file:
+    data = base64.b64encode(image_file.read())
+
 futures.update({data: None})
 # When you publish a message, the client returns a future.
-future = publisher.publish(topic_path, data.encode("utf-8"))
+future = publisher.publish(topic_path, data)
 futures[data] = future
 # Publish failures shall be handled in the callback function.
 future.add_done_callback(get_callback(future, data))
