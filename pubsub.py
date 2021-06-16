@@ -1,4 +1,7 @@
 import time
+import base64
+from PIL import Image
+from io import BytesIO
 
 from google.cloud import pubsub_v1
 
@@ -22,9 +25,6 @@ def get_callback(f, data):
 
     return callback
 
-import base64
-from PIL import Image
-from io import BytesIO
 
 with open("image.jpg", "rb") as image_file:
     data = base64.b64encode(image_file.read())
