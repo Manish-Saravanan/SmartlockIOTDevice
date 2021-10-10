@@ -5,7 +5,6 @@ from io import BytesIO
 
 from google.cloud import pubsub_v1
 
-# TODO(developer)
 
 project_id = "vocal-gist-315804"
 topic_id = "LockRequest"
